@@ -1,0 +1,6 @@
+<ion-list color="dark">
+  <ion-item *ngFor="let p of pendienteService.pendientes" color="dark" detail>
+    <ion-label>{{ p.titulo }}</ion-label>
+    <ion-note slot="end">{{ p.tareas.length }} tareas</ion-note>
+  </ion-item>
+</ion-list>

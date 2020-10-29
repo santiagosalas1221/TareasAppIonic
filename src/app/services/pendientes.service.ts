@@ -5,7 +5,7 @@ import {Pendiente} from '../models/pendiente.model'
   providedIn: 'root'
 })
 export class PendientesService {
-  pendientes: Pendiente[];
+  pendientes: Pendiente[] = [];
 
   constructor() { 
     this.cargarStorage();
