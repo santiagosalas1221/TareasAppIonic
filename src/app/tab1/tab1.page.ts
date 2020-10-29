@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +8,31 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  constructor(private alertController: AlertController) {}
 
+  async agregarPendiente(){
+    const alert = await this.alertController.create({
+      header: 'Nuevo Pendiente', 
+      inputs: [
+        {
+          name: 'titulo',
+          type: 'text',
+          placeholder: 'Nombre del pendiente'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+        },
+        {
+          text: 'Crear',
+          handler: (data) => {
+            console.log(data);
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
 }

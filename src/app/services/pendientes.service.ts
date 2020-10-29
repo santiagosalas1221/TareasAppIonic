@@ -7,5 +7,24 @@ import {Pendiente} from '../models/pendiente.model'
 export class PendientesService {
   pendientes: Pendiente[];
 
-  constructor() { }
+  constructor() { 
+    this.cargarStorage();
+  }
+
+  crearPendiene(titulo:string){
+    const nuevoPendiente = new Pendiente(titulo);
+    this.pendientes.push(nuevoPendiente);
+    this.guardarStorage();
+    return nuevoPendiente.id;
+  }
+
+  guardarStorage() {
+    localStorage.setItem('data', JSON.stringify(this.pendientes));
+  }
+
+  cargarStorage(){
+    if(localStorage.getItem('data')){
+      this.pendientes = JSON.parse(localStorage.getItem('data'));
+    }
+  }
 }
